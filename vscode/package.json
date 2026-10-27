@@ -1,0 +1,105 @@
+{
+  "name": "puzzlescript-psbs",
+  "displayName": "PuzzleScript (psbs)",
+  "description": "PuzzleScript y proyectos PSBS en VS Code: sintaxis (incluye plantillas .pss), errores del compilador oficial, autocompletado, vista previa de sprites y niveles, y el juego al lado con hot reload.",
+  "version": "0.2.0",
+  "publisher": "psbs",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Snippets"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onLanguage:puzzlescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/increpare/PuzzleScript"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "puzzlescript",
+        "aliases": [
+          "PuzzleScript",
+          "puzzlescript"
+        ],
+        "extensions": [
+          ".puzzlescript",
+          ".pzs",
+          ".pss"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "puzzlescript",
+        "scopeName": "source.puzzlescript",
+        "path": "./syntaxes/puzzlescript.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "puzzlescript",
+        "path": "./snippets/puzzlescript.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "puzzlescript.openGame",
+        "title": "Abrir el juego al lado (hot reload)",
+        "category": "PuzzleScript",
+        "icon": "$(play)"
+      },
+      {
+        "command": "puzzlescript.openEditor",
+        "title": "Abrir el editor oficial en el navegador",
+        "category": "PuzzleScript"
+      },
+      {
+        "command": "puzzlescript.playLevel",
+        "title": "Jugar el nivel bajo el cursor",
+        "category": "PuzzleScript"
+      },
+      {
+        "command": "puzzlescript.build",
+        "title": "Exportar a HTML",
+        "category": "PuzzleScript"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "puzzlescript.openGame",
+          "when": "editorLangId == puzzlescript",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "puzzlescript.playLevel",
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "when": "editorLangId == puzzlescript && editorTextFocus"
+      }
+    ],
+    "configurationDefaults": {
+      "[puzzlescript]": {
+        "editor.wordWrap": "off",
+        "editor.renderWhitespace": "none",
+        "editor.quickSuggestions": {
+          "other": true,
+          "comments": false,
+          "strings": false
+        }
+      }
+    }
+  }
+}

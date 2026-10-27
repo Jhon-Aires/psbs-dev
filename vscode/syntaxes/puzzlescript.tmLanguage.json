@@ -1,0 +1,467 @@
+{
+ "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+ "name": "PuzzleScript",
+ "scopeName": "source.puzzlescript",
+ "patterns": [
+  {
+   "include": "#jinja"
+  },
+  {
+   "include": "#comment"
+  },
+  {
+   "include": "#separator"
+  },
+  {
+   "begin": "^\\s*(?i:(OBJECTS))\\s*(?=$|\\()",
+   "beginCaptures": {
+    "1": {
+     "name": "markup.heading.section.puzzlescript keyword.control.section.puzzlescript"
+    }
+   },
+   "end": "(?=^\\s*(?i:OBJECTS|LEGEND|SOUNDS|COLLISIONLAYERS|RULES|WINCONDITIONS|LEVELS)\\s*(?:\\(.*)?$)",
+   "name": "meta.section.objects.puzzlescript",
+   "patterns": [
+    {
+     "include": "#jinja"
+    },
+    {
+     "include": "#comment"
+    },
+    {
+     "include": "#separator"
+    },
+    {
+     "match": "^\\s*[0-9.]{5,}\\s*$",
+     "name": "constant.numeric.sprite.puzzlescript"
+    },
+    {
+     "match": "(?i)(?<![\\w#])(?:black|white|gray|darkgray|lightgray|grey|darkgrey|lightgrey|red|darkred|lightred|brown|darkbrown|lightbrown|orange|yellow|green|darkgreen|lightgreen|blue|lightblue|darkblue|purple|pink|transparent)(?!\\w)",
+     "name": "support.constant.color.puzzlescript"
+    },
+    {
+     "match": "#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\\b",
+     "name": "constant.other.color.hex.puzzlescript"
+    },
+    {
+     "match": "^\\s*([^\\s(]+)",
+     "captures": {
+      "1": {
+       "name": "entity.name.type.object.puzzlescript"
+      }
+     }
+    },
+    {
+     "match": "[^\\s(]+",
+     "name": "variable.other.alias.puzzlescript"
+    }
+   ]
+  },
+  {
+   "begin": "^\\s*(?i:(LEGEND))\\s*(?=$|\\()",
+   "beginCaptures": {
+    "1": {
+     "name": "markup.heading.section.puzzlescript keyword.control.section.puzzlescript"
+    }
+   },
+   "end": "(?=^\\s*(?i:OBJECTS|LEGEND|SOUNDS|COLLISIONLAYERS|RULES|WINCONDITIONS|LEVELS)\\s*(?:\\(.*)?$)",
+   "name": "meta.section.legend.puzzlescript",
+   "patterns": [
+    {
+     "include": "#jinja"
+    },
+    {
+     "include": "#comment"
+    },
+    {
+     "include": "#separator"
+    },
+    {
+     "match": "^\\s*([^\\s=(]+)\\s*(=)",
+     "captures": {
+      "1": {
+       "name": "entity.name.type.legend.puzzlescript"
+      },
+      "2": {
+       "name": "keyword.operator.assignment.puzzlescript"
+      }
+     }
+    },
+    {
+     "match": "(?i)\\b(and|or)\\b",
+     "name": "keyword.operator.logical.puzzlescript"
+    },
+    {
+     "match": "[^\\s(=]+",
+     "name": "variable.other.object.puzzlescript"
+    }
+   ]
+  },
+  {
+   "begin": "^\\s*(?i:(SOUNDS))\\s*(?=$|\\()",
+   "beginCaptures": {
+    "1": {
+     "name": "markup.heading.section.puzzlescript keyword.control.section.puzzlescript"
+    }
+   },
+   "end": "(?=^\\s*(?i:OBJECTS|LEGEND|SOUNDS|COLLISIONLAYERS|RULES|WINCONDITIONS|LEVELS)\\s*(?:\\(.*)?$)",
+   "name": "meta.section.sounds.puzzlescript",
+   "patterns": [
+    {
+     "include": "#jinja"
+    },
+    {
+     "include": "#comment"
+    },
+    {
+     "include": "#separator"
+    },
+    {
+     "match": "(?i)\\b(move|action|create|destroy|cantmove)\\b",
+     "name": "keyword.other.sound-verb.puzzlescript"
+    },
+    {
+     "match": "(?i)\\b(undo|restart|titlescreen|startgame|cancel|endgame|startlevel|endlevel|showmessage|closemessage|sfx(?:10|[0-9]))\\b",
+     "name": "keyword.control.sound-event.puzzlescript"
+    },
+    {
+     "match": "(?i)\\b(up|down|left|right|horizontal|vertical|orthogonal)\\b",
+     "name": "keyword.other.direction.puzzlescript"
+    },
+    {
+     "match": "\\b\\d+\\b",
+     "name": "constant.numeric.sound-seed.puzzlescript"
+    },
+    {
+     "match": "[^\\s(]+",
+     "name": "variable.other.object.puzzlescript"
+    }
+   ]
+  },
+  {
+   "begin": "^\\s*(?i:(COLLISIONLAYERS))\\s*(?=$|\\()",
+   "beginCaptures": {
+    "1": {
+     "name": "markup.heading.section.puzzlescript keyword.control.section.puzzlescript"
+    }
+   },
+   "end": "(?=^\\s*(?i:OBJECTS|LEGEND|SOUNDS|COLLISIONLAYERS|RULES|WINCONDITIONS|LEVELS)\\s*(?:\\(.*)?$)",
+   "name": "meta.section.collisionlayers.puzzlescript",
+   "patterns": [
+    {
+     "include": "#jinja"
+    },
+    {
+     "include": "#comment"
+    },
+    {
+     "include": "#separator"
+    },
+    {
+     "match": ",",
+     "name": "punctuation.separator.puzzlescript"
+    },
+    {
+     "match": "[^\\s(,]+",
+     "name": "variable.other.object.puzzlescript"
+    }
+   ]
+  },
+  {
+   "begin": "^\\s*(?i:(RULES))\\s*(?=$|\\()",
+   "beginCaptures": {
+    "1": {
+     "name": "markup.heading.section.puzzlescript keyword.control.section.puzzlescript"
+    }
+   },
+   "end": "(?=^\\s*(?i:OBJECTS|LEGEND|SOUNDS|COLLISIONLAYERS|RULES|WINCONDITIONS|LEVELS)\\s*(?:\\(.*)?$)",
+   "name": "meta.section.rules.puzzlescript",
+   "patterns": [
+    {
+     "include": "#jinja"
+    },
+    {
+     "include": "#comment"
+    },
+    {
+     "include": "#separator"
+    },
+    {
+     "include": "#rule"
+    }
+   ]
+  },
+  {
+   "begin": "^\\s*(?i:(WINCONDITIONS))\\s*(?=$|\\()",
+   "beginCaptures": {
+    "1": {
+     "name": "markup.heading.section.puzzlescript keyword.control.section.puzzlescript"
+    }
+   },
+   "end": "(?=^\\s*(?i:OBJECTS|LEGEND|SOUNDS|COLLISIONLAYERS|RULES|WINCONDITIONS|LEVELS)\\s*(?:\\(.*)?$)",
+   "name": "meta.section.winconditions.puzzlescript",
+   "patterns": [
+    {
+     "include": "#jinja"
+    },
+    {
+     "include": "#comment"
+    },
+    {
+     "include": "#separator"
+    },
+    {
+     "match": "(?i)\\b(all|any|no|some|on)\\b",
+     "name": "keyword.other.quantifier.puzzlescript"
+    },
+    {
+     "match": "[^\\s(]+",
+     "name": "variable.other.object.puzzlescript"
+    }
+   ]
+  },
+  {
+   "begin": "^\\s*(?i:(LEVELS))\\s*(?=$|\\()",
+   "beginCaptures": {
+    "1": {
+     "name": "markup.heading.section.puzzlescript keyword.control.section.puzzlescript"
+    }
+   },
+   "end": "(?=^\\s*(?i:OBJECTS|LEGEND|SOUNDS|COLLISIONLAYERS|RULES|WINCONDITIONS|LEVELS)\\s*(?:\\(.*)?$)",
+   "name": "meta.section.levels.puzzlescript",
+   "patterns": [
+    {
+     "include": "#jinja"
+    },
+    {
+     "include": "#comment"
+    },
+    {
+     "include": "#separator"
+    },
+    {
+     "match": "(?i)^\\s*(message)\\b(.*)$",
+     "captures": {
+      "1": {
+       "name": "keyword.control.message.puzzlescript"
+      },
+      "2": {
+       "name": "string.unquoted.message.puzzlescript"
+      }
+     }
+    },
+    {
+     "match": "^\\s*\\S.*$",
+     "name": "constant.character.level.puzzlescript"
+    }
+   ]
+  },
+  {
+   "match": "(?i)^\\s*(title|author|homepage|background_color|text_color|key_repeat_interval|realtime_interval|again_interval|flickscreen|zoomscreen|color_palette|youtube)\\b(.*)$",
+   "captures": {
+    "1": {
+     "name": "keyword.other.metadata.puzzlescript"
+    },
+    "2": {
+     "name": "string.unquoted.metadata.puzzlescript"
+    }
+   }
+  },
+  {
+   "match": "(?i)^\\s*(run_rules_on_level_start|norepeat_action|require_player_movement|debug|verbose_logging|throttle_movement|noundo|noaction|norestart|scanline)\\b",
+   "name": "keyword.other.metadata.puzzlescript"
+  },
+  {
+   "match": "(?i)^\\s*(message)\\b(.*)$",
+   "captures": {
+    "1": {
+     "name": "keyword.control.message.puzzlescript"
+    },
+    "2": {
+     "name": "string.unquoted.message.puzzlescript"
+    }
+   }
+  },
+  {
+   "match": "^\\s*[0-9.]{5,}\\s*$",
+   "name": "constant.numeric.sprite.puzzlescript"
+  },
+  {
+   "match": "(?i)(?<![\\w#])(?:black|white|gray|darkgray|lightgray|grey|darkgrey|lightgrey|red|darkred|lightred|brown|darkbrown|lightbrown|orange|yellow|green|darkgreen|lightgreen|blue|lightblue|darkblue|purple|pink|transparent)(?!\\w)",
+   "name": "support.constant.color.puzzlescript"
+  },
+  {
+   "match": "#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\\b",
+   "name": "constant.other.color.hex.puzzlescript"
+  },
+  {
+   "match": "(?i)\\b(all|any|some|on)\\b",
+   "name": "keyword.other.quantifier.puzzlescript"
+  },
+  {
+   "match": "(?i)\\b(and|or)\\b",
+   "name": "keyword.operator.logical.puzzlescript"
+  },
+  {
+   "match": "=",
+   "name": "keyword.operator.assignment.puzzlescript"
+  },
+  {
+   "include": "#rule"
+  }
+ ],
+ "repository": {
+  "comment": {
+   "begin": "\\(",
+   "end": "\\)",
+   "name": "comment.block.puzzlescript",
+   "patterns": [
+    {
+     "include": "#comment"
+    }
+   ]
+  },
+  "separator": {
+   "match": "^\\s*=+\\s*$",
+   "name": "comment.line.separator.puzzlescript punctuation.definition.separator.puzzlescript"
+  },
+  "rule": {
+   "patterns": [
+    {
+     "match": "(?i)\\b(message)\\b(.*)$",
+     "captures": {
+      "1": {
+       "name": "keyword.control.message.puzzlescript"
+      },
+      "2": {
+       "name": "string.unquoted.message.puzzlescript"
+      }
+     }
+    },
+    {
+     "match": "->",
+     "name": "keyword.operator.arrow.puzzlescript"
+    },
+    {
+     "match": "[\\[\\]]",
+     "name": "punctuation.section.brackets.puzzlescript"
+    },
+    {
+     "match": "\\|",
+     "name": "punctuation.separator.cell.puzzlescript"
+    },
+    {
+     "match": "\\.\\.\\.",
+     "name": "keyword.operator.ellipsis.puzzlescript"
+    },
+    {
+     "match": "\\+",
+     "name": "keyword.operator.plus.puzzlescript"
+    },
+    {
+     "match": "(?i)\\b(late|rigid|random|startloop|endloop)\\b",
+     "name": "storage.modifier.puzzlescript"
+    },
+    {
+     "match": "(?i)\\b(cancel|checkpoint|restart|win|again|sfx(?:10|[0-9]))\\b",
+     "name": "keyword.control.command.puzzlescript"
+    },
+    {
+     "match": "(?i)(?<![\\w])(up|down|left|right|horizontal|vertical|orthogonal|moving|stationary|parallel|perpendicular|action|randomdir|no|v)(?![\\w])",
+     "name": "keyword.other.direction.puzzlescript"
+    },
+    {
+     "match": "[<>^]",
+     "name": "keyword.other.direction.puzzlescript"
+    },
+    {
+     "match": "[^\\s\\[\\]|()]+",
+     "name": "variable.other.object.puzzlescript"
+    }
+   ]
+  },
+  "jinja": {
+   "patterns": [
+    {
+     "begin": "\\(#",
+     "end": "#\\)",
+     "name": "comment.block.template.puzzlescript"
+    },
+    {
+     "begin": "\\(%[-+]?",
+     "end": "[-+]?%\\)",
+     "name": "meta.embedded.template.statement.puzzlescript",
+     "beginCaptures": {
+      "0": {
+       "name": "punctuation.section.embedded.begin.puzzlescript"
+      }
+     },
+     "endCaptures": {
+      "0": {
+       "name": "punctuation.section.embedded.end.puzzlescript"
+      }
+     },
+     "patterns": [
+      {
+       "match": "\\b(if|elif|else|endif|for|endfor|in|set|endset|include|import|from|macro|endmacro|call|endcall|filter|endfilter|block|endblock|extends|with|endwith|not|and|or|is|recursive)\\b",
+       "name": "keyword.control.template.puzzlescript"
+      },
+      {
+       "match": "\\\"[^\\\"]*\\\"|'[^']*'",
+       "name": "string.quoted.template.puzzlescript"
+      },
+      {
+       "match": "\\b\\d+(\\.\\d+)?\\b",
+       "name": "constant.numeric.template.puzzlescript"
+      },
+      {
+       "match": "\\b[A-Za-z_]\\w*(?=\\s*\\()",
+       "name": "entity.name.function.template.puzzlescript"
+      },
+      {
+       "match": "\\b[A-Za-z_]\\w*\\b",
+       "name": "variable.other.template.puzzlescript"
+      }
+     ]
+    },
+    {
+     "begin": "\\(\\(",
+     "end": "\\)\\)",
+     "name": "meta.embedded.template.expression.puzzlescript",
+     "beginCaptures": {
+      "0": {
+       "name": "punctuation.section.embedded.begin.puzzlescript"
+      }
+     },
+     "endCaptures": {
+      "0": {
+       "name": "punctuation.section.embedded.end.puzzlescript"
+      }
+     },
+     "patterns": [
+      {
+       "match": "\\\"[^\\\"]*\\\"|'[^']*'",
+       "name": "string.quoted.template.puzzlescript"
+      },
+      {
+       "match": "\\b\\d+(\\.\\d+)?\\b",
+       "name": "constant.numeric.template.puzzlescript"
+      },
+      {
+       "match": "\\|\\s*\\w+",
+       "name": "support.function.filter.template.puzzlescript"
+      },
+      {
+       "match": "\\b[A-Za-z_]\\w*(?=\\s*\\()",
+       "name": "entity.name.function.template.puzzlescript"
+      },
+      {
+       "match": "\\b[A-Za-z_]\\w*\\b",
+       "name": "variable.other.template.puzzlescript"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

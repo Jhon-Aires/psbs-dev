@@ -1,0 +1,15 @@
+/* psbs status badge */
+#psbs-badge {
+  margin-left: 12px;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-family: monospace;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+}
+#psbs-badge.psbs-ok { color: #6fdc8c; border: 1px solid #2f6b3e; }
+#psbs-badge.psbs-wait { color: #c9b36b; border: 1px solid #6b5e2f; }
+#psbs-badge.psbs-off { color: #ff8a80; border: 1px solid #7a2f2a; }
+#psbs-badge.psbs-flash { background-color: rgba(111, 220, 140, 0.35); }
+.psbsMessage { color: #6fdc8c; }

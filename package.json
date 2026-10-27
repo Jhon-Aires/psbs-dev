@@ -1,0 +1,29 @@
+{
+  "name": "psbs-dev",
+  "version": "0.2.0",
+  "description": "Entorno de desarrollo local para PuzzleScript y proyectos PSBS: hot reload, errores en la terminal y en VS Code, export a HTML.",
+  "license": "MIT",
+  "bin": {
+    "psbs-dev": "bin/psbs-dev.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "web",
+    "templates",
+    "engine",
+    "vscode/*.vsix"
+  ],
+  "scripts": {
+    "test": "node test/run.js",
+    "build:vscode": "node scripts/build-vscode.js"
+  },
+  "keywords": [
+    "puzzlescript",
+    "gamedev",
+    "hot-reload"
+  ]
+}

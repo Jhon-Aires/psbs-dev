@@ -1,0 +1,6 @@
+node_modules/
+vscode/engine/
+vscode/engine-node.js
+dist/
+.DS_Store
+vscode/psbs-project.js

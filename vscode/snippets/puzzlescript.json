@@ -1,0 +1,38 @@
+{
+  "Objeto": {
+    "prefix": ["obj", "objeto"],
+    "description": "Objeto con color y sprite 5x5",
+    "body": ["${1:Nombre}", "${2:Blue} ${3:DarkBlue}", "${4:00000}", "${5:01110}", "${6:01110}", "${7:01110}", "${8:00000}", "$0"]
+  },
+  "Objeto de un color": {
+    "prefix": ["objsolid", "objplano"],
+    "description": "Objeto de un solo color, sin sprite",
+    "body": ["${1:Nombre}", "${2:Blue}", "$0"]
+  },
+  "Regla": {
+    "prefix": ["rule", "regla"],
+    "description": "[ ... ] -> [ ... ]",
+    "body": ["[ ${1:> Player} | ${2:Crate} ] -> [ ${3:> Player} | ${4:> Crate} ]$0"]
+  },
+  "Regla late": {
+    "prefix": ["late"],
+    "body": ["late [ ${1:Crate Target} ] -> [ ${2:Crate Target} ${3:sfx0} ]$0"]
+  },
+  "Mensaje": {
+    "prefix": ["msg", "message"],
+    "body": ["message ${1:Texto}$0"]
+  },
+  "Nivel": {
+    "prefix": ["level", "nivel"],
+    "description": "Mapa de nivel vacío",
+    "body": ["", "#######", "#.....#", "#.P.*.#", "#...O.#", "#######", "$0"]
+  },
+  "Condición de victoria": {
+    "prefix": ["win", "all"],
+    "body": ["${1|All,Some,No,Any|} ${2:Target} on ${3:Crate}$0"]
+  },
+  "Encabezado de sección": {
+    "prefix": ["section", "seccion"],
+    "body": ["${1/./=/g}", "${1|OBJECTS,LEGEND,SOUNDS,COLLISIONLAYERS,RULES,WINCONDITIONS,LEVELS|}", "${1/./=/g}", "", "$0"]
+  }
+}
